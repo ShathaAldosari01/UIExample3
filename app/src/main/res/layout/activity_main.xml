@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="#145374">
+
+   <RelativeLayout
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+      android:layout_centerVertical="true"
+       android:layout_centerHorizontal="true"
+       android:padding="15dp">
+      <RelativeLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_centerHorizontal="true"
+          android:id="@+id/taskBtn"
+          android:background="#F6F5F5">
+
+         <ImageView
+             android:id="@+id/taskImg"
+             android:layout_width="200dp"
+             android:layout_height="200dp"
+
+
+             android:src="@mipmap/taskimgh" />
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_below="@+id/taskImg"
+             android:text="Tasks"
+             android:textColor="#00334E"
+             android:textStyle="bold"
+             android:textSize="23dp"
+             android:layout_centerHorizontal="true"/>
+      </RelativeLayout>
+
+
+
+      <RelativeLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_centerHorizontal="true"
+          android:id="@+id/reminderBtn"
+          android:layout_marginTop="25dp"
+          android:layout_below="@id/taskBtn"
+          android:background="#F6F5F5"
+          android:padding="5dp">
+
+         <ImageView
+             android:layout_width="200dp"
+             android:layout_height="200dp"
+             android:id="@+id/reminderImg"
+
+             android:layout_centerHorizontal="true"
+             android:src="@mipmap/reminderimgh"/>
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_below="@+id/reminderImg"
+             android:text="Reminders"
+             android:textColor="#00334E"
+             android:textStyle="bold"
+             android:textSize="23dp"
+             android:layout_centerHorizontal="true"/>
+      </RelativeLayout>
+
+   </RelativeLayout>
+
+
+</RelativeLayout>
