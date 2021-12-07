@@ -7,6 +7,7 @@
     tools:context=".TaskFormActivity">
 
     <RelativeLayout
+        android:id="@+id/headerTaskForm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/blue"
@@ -19,6 +20,47 @@
             android:textColor="@color/light_grey"
             android:textSize="30dp"
             />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/headerTaskForm"
+        android:padding="15dp">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Task Name"
+            android:id="@+id/taskName"
+            android:textSize="23dp"
+            android:layout_margin="15dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Intensity Level"
+            android:layout_below="@+id/taskName"
+            android:id="@+id/taskIntensityText"
+            android:textSize="23dp"
+            android:layout_margin="15dp"/>
+        <Spinner
+            android:id="@+id/taskIntensityLevel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/taskIntensityText"
+            android:layout_below="@+id/taskName"
+            android:entries="@array/intensityLevel"
+            android:scrollbarSize="30dp"
+            android:layout_margin="15dp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="20dp"
+            android:text="ADD"
+            android:textStyle="bold"
+            android:textSize="23dp"/>
 
     </RelativeLayout>
 

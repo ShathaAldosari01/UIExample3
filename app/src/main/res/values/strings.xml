@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">FittMinder</string>
+    <string-array name="intensityLevel">
+        <item>Low</item>
+        <item>Moderate</item>
+        <item>High</item>
+    </string-array>
 </resources>
