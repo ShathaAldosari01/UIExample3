@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/CustomizedAppTheme">
         <activity
+            android:name=".TaskFormActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ReminderFormActivity"
+            android:exported="true" />
+        <activity
             android:name=".RemindersActivity"
             android:exported="true" />
         <activity
