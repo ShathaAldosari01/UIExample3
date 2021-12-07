@@ -16,7 +16,8 @@
       <RelativeLayout
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_centerHorizontal="true"
+          android:layout_marginRight="30dp"
+          android:layout_centerVertical="true"
           android:id="@+id/taskBtn"
           android:background="#F6F5F5"
           android:padding="15dp">
@@ -28,15 +29,16 @@
 
 
              android:src="@mipmap/taskimgh" />
+
          <TextView
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:layout_below="@+id/taskImg"
+             android:layout_centerHorizontal="true"
              android:text="Tasks"
              android:textColor="#00334E"
-             android:textStyle="bold"
              android:textSize="23dp"
-             android:layout_centerHorizontal="true"/>
+             android:textStyle="bold" />
       </RelativeLayout>
 
 
@@ -44,10 +46,10 @@
       <RelativeLayout
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_centerHorizontal="true"
+          android:layout_centerVertical="true"
           android:id="@+id/reminderBtn"
-          android:layout_marginTop="25dp"
-          android:layout_below="@id/taskBtn"
+          android:layout_marginLeft="30dp"
+          android:layout_toRightOf="@+id/taskBtn"
           android:background="#F6F5F5"
           android:padding="15dp">
 
@@ -56,7 +58,6 @@
              android:layout_height="200dp"
              android:id="@+id/reminderImg"
 
-             android:layout_centerHorizontal="true"
              android:src="@mipmap/reminderimgh"/>
          <TextView
              android:layout_width="wrap_content"
