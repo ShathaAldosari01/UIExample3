@@ -18,6 +18,7 @@
             android:text="Task List"
             android:textColor="@color/light_grey"
             android:textSize="30dp"
+            android:textStyle="bold"
             />
 
     </RelativeLayout>
