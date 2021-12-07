@@ -6,10 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".RemindersActivity">
 
-    <Button
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/reminderAddBtn"
         android:src="@drawable/ic_add"
-        />
+        tools:ignore="MissingClass"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"
+        android:backgroundTint="@color/orange"
+        app:backgroundTint="@color/blue"/>
 </RelativeLayout>
