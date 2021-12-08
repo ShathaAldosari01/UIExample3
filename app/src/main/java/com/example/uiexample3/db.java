@@ -74,10 +74,7 @@ public class db extends SQLiteOpenHelper {
         cv.put("taskID", task.getId());
         cv.put(NAME, task.getName());
         cv.put(INTENSITY_LEVEL, task.getIntensityLevel());
-        if(task.getCheacked().equals("1"))
-            cv.put(CHEKED, "1");
-        else
-            cv.put(CHEKED, "0");
+        cv.put(CHEKED, task.getCheacked());
 
         long r= d.insert(TABLE_NAME,null,cv);
 //        System.out.println(r);
@@ -143,4 +140,97 @@ public class db extends SQLiteOpenHelper {
         }
         return cursor;
     }
+
+    public String changeCheack(long id){
+        String cheaked = "1",go="";
+        String query = "SELECT * FROM "+TABLE_NAME+" WHERE "+ID+" = "+ id;
+        SQLiteDatabase d = this.getReadableDatabase();
+
+        Cursor cursor = null;
+        if(d !=null){
+            cursor= d.rawQuery(query,null);
+
+        }
+
+        if(cursor.getCount() == 0){
+            Toast.makeText(context, "wrong id", Toast.LENGTH_SHORT).show();
+
+
+        }else {
+            if (cursor.moveToNext()){
+
+
+                cheaked = cursor.getString(3);//0
+//                o= ;
+
+                SQLiteDatabase d1 = this.getReadableDatabase();
+                ContentValues cv = new ContentValues();
+
+                cv.put(ID,cursor.getString(0)); //These Fields should be your String values of actual column names
+                cv.put(NAME,cursor.getString(1));
+                cv.put(INTENSITY_LEVEL,cursor.getString(2));
+
+                if(cursor.getString(3).equals("0")){
+                    cv.put(CHEKED,"1");
+                    go ="1";
+                    Toast.makeText(context, "Will done!", Toast.LENGTH_SHORT).show();
+                }else{
+                    cv.put(CHEKED,"0");
+                    go ="0";
+                }
+
+                d1.update(TABLE_NAME, cv, "taskID = ?", new String[]{""+id});;
+
+            }
+        }
+        return go;
+    }
+
+    public String changeCheackReminder(long id){
+        String cheaked = "1",go="";
+        String query = "SELECT * FROM "+RTABLE_NAME+" WHERE "+RID+" = "+ id;
+        SQLiteDatabase d = this.getReadableDatabase();
+
+        Cursor cursor = null;
+        if(d !=null){
+            cursor= d.rawQuery(query,null);
+
+        }
+
+        if(cursor.getCount() == 0){
+            Toast.makeText(context, "wrong id", Toast.LENGTH_SHORT).show();
+
+
+        }else {
+            if (cursor.moveToNext()){
+
+
+                cheaked = cursor.getString(3);//0
+//                o= ;
+
+                SQLiteDatabase d1 = this.getReadableDatabase();
+                ContentValues cv = new ContentValues();
+
+                cv.put(RID,cursor.getString(0)); //These Fields should be your String values of actual column names
+                cv.put(RNAME,cursor.getString(1));
+                cv.put(RINTENSITY_LEVEL,cursor.getString(2));
+
+                if(cursor.getString(3).equals("0")){
+                    cv.put(RCHEKED,"1");
+                    go ="1";
+                    Toast.makeText(context, "Will Done", Toast.LENGTH_SHORT).show();
+                }else{
+                    cv.put(RCHEKED,"0");
+                    go ="0";
+                }
+
+                cv.put(RDATE,cursor.getString(4));
+
+                d1.update(RTABLE_NAME, cv, "reminderID = ?", new String[]{""+id});;
+
+            }
+        }
+        return go;
+    }
+
 }

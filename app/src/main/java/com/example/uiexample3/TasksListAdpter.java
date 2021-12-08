@@ -17,6 +17,7 @@ public class TasksListAdpter extends RecyclerView.Adapter<TasksListAdpter.MyView
 
     private Context context;
     private ArrayList id, name,intl, ch;
+//    int position;
 
     TasksListAdpter(Context co, ArrayList i, ArrayList n, ArrayList in, ArrayList c ){
         context = co;
@@ -36,13 +37,21 @@ public class TasksListAdpter extends RecyclerView.Adapter<TasksListAdpter.MyView
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+//        this.position = position;
+        int p = position;
         holder.tasName.setText(String.valueOf(name.get(position)));
         holder.chip.setText(String.valueOf(intl.get(position)));
         if(String.valueOf(ch.get(position)).equals("1"))
             holder.cb.setChecked(true);
         else
             holder.cb.setChecked(false);
-
+        holder.cb.setId(Integer.parseInt(String.valueOf(id.get(position))));
+//        holder.cb.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                String ii = String.valueOf(id.get(p));
+//            }
+//        });
     }
 
     @Override
@@ -57,6 +66,7 @@ public class TasksListAdpter extends RecyclerView.Adapter<TasksListAdpter.MyView
         View line;
         RelativeLayout taskInfoDiv;
         com.google.android.material.chip.Chip chip;
+        RelativeLayout mainLayout;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -66,6 +76,7 @@ public class TasksListAdpter extends RecyclerView.Adapter<TasksListAdpter.MyView
             taskInfoDiv = itemView.findViewById(R.id.taskInfoDiv);
             tasName = itemView.findViewById(R.id.tasName);
             chip = itemView.findViewById(R.id.chip);
+            mainLayout= itemView.findViewById(R.id.mainLayout);
         }
     }
 }

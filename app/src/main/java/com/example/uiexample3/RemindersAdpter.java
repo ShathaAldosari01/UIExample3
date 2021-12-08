@@ -44,6 +44,8 @@ public class RemindersAdpter extends RecyclerView.Adapter<RemindersAdpter.MyView
        else
            holder.cb.setChecked(false);
         holder.dateTim.setText(String.valueOf(date.get(position)));
+        holder.cb.setId(Integer.parseInt(String.valueOf(id.get(position))));
+
 
     }
 
@@ -60,6 +62,7 @@ public class RemindersAdpter extends RecyclerView.Adapter<RemindersAdpter.MyView
         RelativeLayout taskInfoDiv;
         com.google.android.material.chip.Chip chip;
         com.google.android.material.chip.Chip dateTim;
+        RelativeLayout mainLayout;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -70,6 +73,7 @@ public class RemindersAdpter extends RecyclerView.Adapter<RemindersAdpter.MyView
             tasName = itemView.findViewById(R.id.tasName);
             chip = itemView.findViewById(R.id.level);
             dateTim = itemView.findViewById(R.id.date);
+            mainLayout= itemView.findViewById(R.id.mainLayout);
 
         }
     }

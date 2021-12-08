@@ -77,4 +77,19 @@ public class RemindersActivity extends AppCompatActivity {
             }
         }
     }
+
+    /*cheak, delete*/
+    public void cheakMe(View view){
+        long id = view.getId();
+
+//        Toast.makeText(this, "Will Done!"+id,Toast.LENGTH_SHORT).show();
+        String che =d.changeCheackReminder(id);
+//        Toast.makeText(this, "Will Done!"+che,Toast.LENGTH_SHORT).show();
+
+    }
+    public void deleteMe(View view){
+        Toast.makeText(this, "Delete!", Toast.LENGTH_SHORT).show();
+    }
+
+
 }

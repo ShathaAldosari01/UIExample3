@@ -8,16 +8,44 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.EditText;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
-public class TasksActivity extends AppCompatActivity {
+public class TasksActivity extends AppCompatActivity {//implements View.OnClickListener, CompoundButton.OnCheckedChangeListener{
 
     private FloatingActionButton fab;
     private RecyclerView taskTodo;//contactRecView
+
+//    private CheckBox checkBox;
+//    private TextView deleteT;
+//    private TaskList taskList;
+    /*cheack and delete*/
+//    @Override
+//    public void onClick(View view) {
+//        switch (view.getId()){
+//            case R.id.deleteTask:
+//                Toast.makeText(this, "Tast Deleted!", Toast.LENGTH_SHORT).show();
+//                break;
+//        }
+//    }
+//
+//    @Override
+//    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+//        switch (compoundButton.getId()){
+//            case R.id.taskId:
+//                if(b)
+//                    Toast.makeText(this, "Will Done!", Toast.LENGTH_SHORT).show();
+//        }
+//
+//    }
     /*tasks | S1*/
     db d ;
     ArrayList<String> id, name, intLevel, ch;
@@ -55,6 +83,18 @@ public class TasksActivity extends AppCompatActivity {
         tasksListAdpter = new TasksListAdpter(TasksActivity.this,id, name, intLevel,ch);
         taskTodo.setAdapter(tasksListAdpter);
         taskTodo.setLayoutManager(new LinearLayoutManager(TasksActivity.this));
+
+        /*tasks list*/
+//        if(taskList==null){
+//            taskList = new TaskList();
+//        }
+        /*cheacking */
+//        checkBox = findViewById(R.id.taskId);
+//        checkBox.setOnCheckedChangeListener(this);
+//
+//        deleteT = findViewById(R.id.deleteTask);
+//        deleteT.setOnClickListener(this);
+
     }
     /*tasks | S3*/
     public void storDataInArray(){
@@ -71,5 +111,17 @@ public class TasksActivity extends AppCompatActivity {
 //                ch.add(0);
             }
         }
+    }
+    /*cheak, delete*/
+    public void cheakMe(View view){
+        long id = view.getId();
+
+//        Toast.makeText(this, "Will Done!"+id,Toast.LENGTH_SHORT).show();
+        String che =d.changeCheack(id);
+//        Toast.makeText(this, "Will Done!"+che,Toast.LENGTH_SHORT).show();
+
+    }
+    public void deleteMe(View view){
+        Toast.makeText(this, "Delete!", Toast.LENGTH_SHORT).show();
     }
 }
