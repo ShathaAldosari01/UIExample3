@@ -4,22 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RemindersActivity">
+    tools:context=".RemindersActivity"
+    android:background="@color/blue">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/blue"
-        android:padding="5dp"
-        tools:ignore="MissingConstraints">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Reminder List"
-            android:textColor="@color/light_grey"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            />
+        android:layout_height="match_parent"
+        android:layout_marginLeft="1px"
+        android:layout_marginRight="2px"
+        android:padding="20dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/reminderTodo"/>
 
     </RelativeLayout>
 

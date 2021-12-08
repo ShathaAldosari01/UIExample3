@@ -4,66 +4,104 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ReminderFormActivity">
+    tools:context=".ReminderFormActivity"
+    android:background="@color/blue">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/blue"
-        android:padding="5dp"
-        tools:ignore="MissingConstraints"
-        android:id="@+id/headerReminderForm"
-        android:textStyle="bold">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Reminder Form"
-            android:textColor="@color/light_grey"
-            android:textSize="30dp"
-            />
+<!--    <RelativeLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@color/blue"-->
+<!--        android:padding="5dp"-->
+<!--        tools:ignore="MissingConstraints"-->
+<!--        android:id="@+id/headerReminderForm"-->
+<!--        android:textStyle="bold">-->
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Reminder Form"-->
+<!--            android:textColor="@color/light_grey"-->
+<!--            android:textSize="30dp"-->
+<!--            />-->
 
-    </RelativeLayout>
+<!--    </RelativeLayout>-->
 
     <RelativeLayout
         android:id="@+id/reminderForm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/headerReminderForm"
         android:padding="15dp">
-        <EditText
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rn"
+            android:layout_margin="15dp"
+            android:background="@color/light_grey">
+            <EditText
+                android:background="@color/light_grey"
+                android:textColor="@color/dark_blue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Reminder name"
+                android:id="@+id/reminderName"
+                android:textSize="23dp"
+                android:layout_margin="15dp"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ril"
+            android:layout_below="@+id/rn"
+            android:background="@color/light_grey"
+            android:layout_margin="15dp">
+            <TextView
+                android:background="@color/light_grey"
+                android:textColor="@color/dark_blue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Intensity level:"
+                android:id="@+id/reminderIntensityText"
+                android:textSize="23dp"
+                android:layout_margin="15dp"/>
+            <Spinner
+                android:layout_marginTop="2dp"
+                android:id="@+id/reminderIntensityLevel"
+                android:layout_toRightOf="@+id/reminderIntensityText"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/intensityLevel"
+                android:scrollbarSize="30dp"
+                android:layout_margin="15dp"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/ril"
+            android:layout_below="@+id/rn"
+            android:background="@color/light_grey"
+            android:layout_margin="15dp">
+
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Reminder Name"
-            android:id="@+id/reminderName"
-            android:textSize="23dp"
-            android:layout_margin="15dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Intensity Level"
-            android:layout_below="@+id/reminderName"
-            android:id="@+id/reminderIntensityText"
-            android:textSize="23dp"
-            android:layout_margin="15dp"/>
-        <Spinner
-            android:id="@+id/taskIntensityLevel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/reminderIntensityText"
-            android:layout_below="@+id/reminderName"
-            android:entries="@array/intensityLevel"
-            android:scrollbarSize="30dp"
-            android:layout_margin="15dp"/>
+            android:background="@color/light_grey"
+            android:layout_below="@+id/ril"
+            android:layout_margin="15dp">
+            <EditText
+                android:id="@+id/date_time_input"
+                android:textSize="23dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_margin="15dp"
+                android:background="@color/light_grey"
+                android:hint="Select date and Time"
+                android:inputType="none" />
+        </RelativeLayout>
 
-        <EditText
-            android:id="@+id/date_time_input"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_margin="15dp"
-            android:layout_below="@+id/taskIntensityLevel"
-            android:hint="SELECT DATE and Time"
-            android:inputType="none" />
     </RelativeLayout>
 
         <Button

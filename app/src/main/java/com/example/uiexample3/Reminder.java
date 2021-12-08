@@ -1,28 +1,29 @@
 package com.example.uiexample3;
 
-
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.util.Random;
 
-public class Task implements Parcelable {
-    protected Task(Parcel in) {
-        taskID = in.readString();
+
+public class Reminder implements Parcelable {
+    protected Reminder(Parcel in) {
+        reminderID = in.readString();
         name = in.readString();
         intensityLevel = in.readString();
         cheacked = in.readString();
+        date = in.readString();
     }
 
-    public static final Creator<Task> CREATOR = new Creator<Task>() {
+    public static final Creator<Reminder> CREATOR = new Creator<Reminder>() {
         @Override
-        public Task createFromParcel(Parcel in) {
-            return new Task(in);
+        public Reminder createFromParcel(Parcel in) {
+            return new Reminder(in);
         }
 
         @Override
-        public Task[] newArray(int size) {
-            return new Task[size];
+        public Reminder[] newArray(int size) {
+            return new Reminder[size];
         }
     };
 
@@ -33,22 +34,25 @@ public class Task implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(taskID);
+        parcel.writeString(reminderID);
         parcel.writeString(name);
         parcel.writeString(intensityLevel);
         parcel.writeString(cheacked);
+        parcel.writeString(date);
     }
 
-    private String taskID;
+    private String reminderID;
     private String name;
     private String intensityLevel;
+    private String date; //yy-mm-dd hh:mm
     private String cheacked;
 
-    public Task(String n, String i){
+    public Reminder(String n, String i, String date){
         //TODO validation for name, intensity
         name= n;
         intensityLevel=i;
         cheacked="0";
+        this.date = date;
         //gnrat id
         Random random= new Random();
         int ids[]= new int[6];
@@ -58,21 +62,21 @@ public class Task implements Parcelable {
         ids[3] = random.nextInt(122-97)+97;
         ids[4] = random.nextInt(10);
         ids[5] = random.nextInt(10);
-        taskID= ""+(char)ids[0]+(char)ids[1]+(char)ids[2]+(char)ids[3]+ids[4]+ids[5];
+        reminderID= ""+(char)ids[0]+(char)ids[1]+(char)ids[2]+(char)ids[3]+ids[4]+ids[5];
     }
 
-    public void displayTaskInfo(){
-        //TODO displayTaskInfo
+    public void displayReminderInfo(){
+        //TODO displayReminderInfo
     }
 
-    public void cheackTask(){
+    public void cheackReminder(){
         if(cheacked.equals("0"))
             cheacked= "1";
         else cheacked = "0";
     }
 
-    public boolean deleteTask(){
-        //TODO deleteTask
+    public boolean deleteReminder(){
+        //TODO deleteReminder
         return true;
     }
 
@@ -95,11 +99,16 @@ public class Task implements Parcelable {
     }
 
     public String getId(){
-        return taskID;
+        return reminderID;
     }
 
     public String toString(){
         return name;
     }
 
+    public String getDate(){
+        return date;
+    }
+
 }
+

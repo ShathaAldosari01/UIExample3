@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/parent"
+    android:padding="20dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:background="@color/light_grey">
+
+        <CheckBox
+            android:id="@+id/taskId"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_centerVertical="true"
+            android:buttonTint="@color/orange"
+            android:scaleX="1.5"
+            android:scaleY="1.5"/>
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="1dp"
+            android:layout_height="100dp"
+            android:layout_margin="5dp"
+            android:layout_toRightOf="@+id/taskId"
+            android:background="@color/dark_blue"
+            android:layout_centerVertical="true"/>
+
+        <RelativeLayout
+            android:id="@+id/taskInfoDiv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/line"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/tasName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Task Name"
+                android:textColor="@color/dark_blue"
+                android:textSize="23dp"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"/>
+
+                <com.google.android.material.chip.Chip
+                android:id="@+id/chip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tasName"
+                android:layout_margin="5dp"
+                android:text="High" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/deleteTask"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="8dp"
+            android:text="Delete"
+            android:textColor="@color/orange"
+            android:textSize="23dp" />
+
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

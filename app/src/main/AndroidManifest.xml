@@ -11,15 +11,23 @@
         android:theme="@style/CustomizedAppTheme">
         <activity
             android:name=".TaskFormActivity"
+            android:label="Task Form"
+            android:parentActivityName=".TasksActivity"
             android:exported="true" />
         <activity
             android:name=".ReminderFormActivity"
+            android:parentActivityName=".RemindersActivity"
+            android:label="Reminder Form"
             android:exported="true" />
         <activity
             android:name=".RemindersActivity"
+            android:parentActivityName=".MainActivity"
+            android:label="Reminder List"
             android:exported="true" />
         <activity
             android:name=".TasksActivity"
+            android:parentActivityName=".MainActivity"
+            android:label="Task List"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
