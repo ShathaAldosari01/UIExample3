@@ -47,6 +47,7 @@ public class TasksActivity extends AppCompatActivity {
         id= new ArrayList<>();
         name= new ArrayList<>();
         intLevel= new ArrayList<>();
+        ch = new ArrayList<>();
 
         storDataInArray();
 
