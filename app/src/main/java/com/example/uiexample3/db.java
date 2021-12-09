@@ -105,10 +105,7 @@ public class db extends SQLiteOpenHelper {
         cv.put(RID, reminder.getId());
         cv.put(RNAME, reminder.getName());
         cv.put(RINTENSITY_LEVEL, reminder.getIntensityLevel());
-        if(reminder.getCheacked().equals("1"))
-            cv.put(RCHEKED, "1");
-        else
-            cv.put(RCHEKED, "0");
+        cv.put(RCHEKED, reminder.getCheacked());
         cv.put(RDATE, reminder.getDate());
 
         long r= d.insert(RTABLE_NAME,null,cv);

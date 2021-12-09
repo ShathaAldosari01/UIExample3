@@ -48,8 +48,8 @@ public class RemindersActivity extends AppCompatActivity {
         });
         //don't know why
         Reminder reminder = getIntent().getParcelableExtra("reminder");
-        if (reminder !=null)
-            Toast.makeText(RemindersActivity.this, "reminder is "+reminder.getName()+",  "+reminder.getCheacked()+", "+reminder.getId()+", "+reminder.getIntensityLevel(), Toast.LENGTH_LONG).show();
+//        if (reminder !=null)
+//            Toast.makeText(RemindersActivity.this, "reminder is "+reminder.getName()+",  "+reminder.getCheacked()+", "+reminder.getId()+", "+reminder.getIntensityLevel(), Toast.LENGTH_LONG).show();
         reminderTodo = findViewById(R.id.reminderTodo);
 
         /*tasks | S2*/

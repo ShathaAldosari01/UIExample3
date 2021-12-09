@@ -60,9 +60,13 @@ public class Reminder implements Parcelable {
 //        ids[1] = random.nextInt(90-65)+65;
 //        ids[2] = random.nextInt(122-97)+97;
 //        ids[3] = random.nextInt(122-97)+97;
+        ids[0] = random.nextInt(10);
+        ids[1] = random.nextInt(10);
+        ids[2] = random.nextInt(10);
+        ids[3] = random.nextInt(10);
         ids[4] = random.nextInt(10);
         ids[5] = random.nextInt(10);
-        reminderID= ""+ids[4]+ids[5];
+        reminderID= ""+ids[5]+ids[4]+ids[3]+ids[2]+ids[1]+ids[0];
     }
 
     public void displayReminderInfo(){

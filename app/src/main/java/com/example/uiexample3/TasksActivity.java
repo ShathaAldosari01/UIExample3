@@ -79,8 +79,8 @@ public class TasksActivity extends AppCompatActivity {//implements View.OnClickL
         });
 
         Task task = getIntent().getParcelableExtra("task");
-        if (task !=null)
-        Toast.makeText(TasksActivity.this, "task is "+task.getName()+",  "+task.getCheacked()+", "+task.getId()+", "+task.getIntensityLevel(), Toast.LENGTH_LONG).show();
+//        if (task !=null)
+//        Toast.makeText(TasksActivity.this, "task is "+task.getName()+",  "+task.getCheacked()+", "+task.getId()+", "+task.getIntensityLevel(), Toast.LENGTH_LONG).show();
         taskTodo = findViewById(R.id.tasksTodo);
 
         /*tasks | S2*/
