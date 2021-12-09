@@ -46,6 +46,7 @@ public class TasksListAdpter extends RecyclerView.Adapter<TasksListAdpter.MyView
         else
             holder.cb.setChecked(false);
         holder.cb.setId(Integer.parseInt(String.valueOf(id.get(position))));
+        holder.dt.setId(1+Integer.parseInt(String.valueOf(id.get(position))));
 //        holder.cb.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {

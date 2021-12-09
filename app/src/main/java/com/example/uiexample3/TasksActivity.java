@@ -1,9 +1,11 @@
 package com.example.uiexample3;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -15,11 +17,17 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
 public class TasksActivity extends AppCompatActivity {//implements View.OnClickListener, CompoundButton.OnCheckedChangeListener{
+
+    /*Delete msg |S1*/
+    AlertDialog alertDialog;
+    AlertDialog.Builder builder;
+    /*End of Delete msg |S1*/
 
     private FloatingActionButton fab;
     private RecyclerView taskTodo;//contactRecView
@@ -55,6 +63,11 @@ public class TasksActivity extends AppCompatActivity {//implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tasks);
+
+
+
+
+
 
         fab = findViewById(R.id.taskAddBtn);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -95,6 +108,8 @@ public class TasksActivity extends AppCompatActivity {//implements View.OnClickL
 //        deleteT = findViewById(R.id.deleteTask);
 //        deleteT.setOnClickListener(this);
 
+
+
     }
     /*tasks | S3*/
     public void storDataInArray(){
@@ -112,16 +127,52 @@ public class TasksActivity extends AppCompatActivity {//implements View.OnClickL
             }
         }
     }
-    /*cheak, delete*/
+    /*cheak */
     public void cheakMe(View view){
         long id = view.getId();
 
 //        Toast.makeText(this, "Will Done!"+id,Toast.LENGTH_SHORT).show();
         String che =d.changeCheack(id);
-//        Toast.makeText(this, "Will Done!"+che,Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "Will Done!"+id+che,Toast.LENGTH_SHORT).show();
 
     }
     public void deleteMe(View view){
-        Toast.makeText(this, "Delete!", Toast.LENGTH_SHORT).show();
+        /*Delete msg |S2*/
+        long id = view.getId();
+        //delete 2.1
+        builder = new AlertDialog.Builder(TasksActivity.this);//change TasksActivity to your page
+
+        builder.setTitle("Are you sure you want to delete the task?");
+//        builder.setSingleChoiceItems(item, -1, new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialogInterface, int i) {
+//
+//            }
+//        });
+
+        builder.setPositiveButton("DELETE", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                d.deleteTask(id-1);
+                finish();
+                startActivity(getIntent());
+                Toast.makeText(TasksActivity.this, "the Task has been deleted!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Toast.makeText(TasksActivity.this, "the deletion was canceled!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // 2.2
+        alertDialog = builder.create();
+        alertDialog.show();
+        /*End of Delete msg |S2*/
+
+//        Toast.makeText(this, "Delete!", Toast.LENGTH_SHORT).show();
+
     }
 }

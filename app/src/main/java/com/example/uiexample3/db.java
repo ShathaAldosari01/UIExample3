@@ -101,7 +101,7 @@ public class db extends SQLiteOpenHelper {
         SQLiteDatabase d = this.getWritableDatabase();
         ContentValues cv =new ContentValues();
 
-        Toast.makeText(context, "reminder has been added with name= "+reminder.getName()+ "and i= "+reminder.getId()+" date "+reminder.getDate(), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(context, "reminder has been added with name= "+reminder.getName()+ "and i= "+reminder.getId()+" date "+reminder.getDate(), Toast.LENGTH_SHORT).show();
         cv.put(RID, reminder.getId());
         cv.put(RNAME, reminder.getName());
         cv.put(RINTENSITY_LEVEL, reminder.getIntensityLevel());
@@ -141,7 +141,7 @@ public class db extends SQLiteOpenHelper {
         return cursor;
     }
 
-    public String changeCheack(long id){
+    public String changeCheack(long id){//for task
         String cheaked = "1",go="";
         String query = "SELECT * FROM "+TABLE_NAME+" WHERE "+ID+" = "+ id;
         SQLiteDatabase d = this.getReadableDatabase();
@@ -232,5 +232,26 @@ public class db extends SQLiteOpenHelper {
         }
         return go;
     }
+
+    /*Delete*/
+    public boolean deleteTask(long id){
+
+        SQLiteDatabase d = this.getReadableDatabase();
+
+        String whereClause = "taskID=?";
+        String[] whereId = new String[] { ""+id };
+        return d.delete(TABLE_NAME, whereClause, whereId)>0;
+    }
+
+    /*Delete*/
+    public boolean deleteReminder(long id){
+
+        SQLiteDatabase d = this.getReadableDatabase();
+
+        String whereClause = RID+"=?";
+        String[] whereId = new String[] { ""+id };
+        return d.delete(RTABLE_NAME, whereClause, whereId)>0;
+    }
+
 
 }

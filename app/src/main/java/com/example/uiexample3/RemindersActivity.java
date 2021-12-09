@@ -1,7 +1,9 @@
 package com.example.uiexample3;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -17,6 +19,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 
 public class RemindersActivity extends AppCompatActivity {
+
+    /*Delete msg |S1*/
+    AlertDialog alertDialog;
+    AlertDialog.Builder builder;
+    /*End of Delete msg |S1*/
 
     private FloatingActionButton fab;
     private RecyclerView reminderTodo;//contactRecView
@@ -84,11 +91,42 @@ public class RemindersActivity extends AppCompatActivity {
 
 //        Toast.makeText(this, "Will Done!"+id,Toast.LENGTH_SHORT).show();
         String che =d.changeCheackReminder(id);
-//        Toast.makeText(this, "Will Done!"+che,Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "Will Done!"+id,Toast.LENGTH_SHORT).show();
 
     }
     public void deleteMe(View view){
-        Toast.makeText(this, "Delete!", Toast.LENGTH_SHORT).show();
+
+        /*Delete msg |S2*/
+        long id = view.getId();
+        //delete 2.1
+        builder = new AlertDialog.Builder(RemindersActivity.this);//change TasksActivity to your page
+
+        builder.setTitle("Are you sure you want to delete the reminder?");
+
+        builder.setPositiveButton("DELETE", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                d.deleteReminder(id-1);
+                finish();
+                startActivity(getIntent());
+                Toast.makeText(RemindersActivity.this, "The reminder has been deleted!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Toast.makeText(RemindersActivity.this, "Delete was canceled!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // 2.2
+        alertDialog = builder.create();
+        alertDialog.show();
+        /*End of Delete msg |S2*/
+
+//        Toast.makeText(this, "Delete!", Toast.LENGTH_SHORT).show();
+
     }
 
 

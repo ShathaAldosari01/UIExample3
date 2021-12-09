@@ -45,6 +45,8 @@ public class RemindersAdpter extends RecyclerView.Adapter<RemindersAdpter.MyView
            holder.cb.setChecked(false);
         holder.dateTim.setText(String.valueOf(date.get(position)));
         holder.cb.setId(Integer.parseInt(String.valueOf(id.get(position))));
+        holder.cb.setId(Integer.parseInt(String.valueOf(id.get(position))));
+        holder.dt.setId(1+Integer.parseInt(String.valueOf(id.get(position))));
 
 
     }
