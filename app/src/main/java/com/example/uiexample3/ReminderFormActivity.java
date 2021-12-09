@@ -3,6 +3,8 @@ package com.example.uiexample3;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.nfc.NfcAdapter;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
@@ -104,6 +106,11 @@ public class ReminderFormActivity extends AppCompatActivity {
                     Intent intent = new Intent(ReminderFormActivity.this, RemindersActivity.class);
                     intent.putExtra("reminder",reminder );
                     startActivity(intent);
+
+                    /*notification ~ s1*/
+                    createNotificationChannel();
+                    /*notification ~ s1 end*/
+
                 }else {
                     Toast.makeText(ReminderFormActivity.this, "you need to full ALL the form to add the reminder", Toast.LENGTH_SHORT).show();
                 }
@@ -111,7 +118,13 @@ public class ReminderFormActivity extends AppCompatActivity {
         });
         //end add reminder to db
 
+
     }
+    /*notification ~ s2*/
+    public void createNotificationChannel(){
+//        if(Build)
+    }
+    /*notification ~ s2 end*/
 
 
     //for date and time
