@@ -1,7 +1,13 @@
 package com.example.uiexample3;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
+import android.app.AlarmManager;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
 import android.nfc.NfcAdapter;
 import android.os.Build;
@@ -32,6 +38,9 @@ public class ReminderFormActivity extends AppCompatActivity {
     private Spinner tasksSpinner;
     private EditText reminderName;
     EditText date_time_in;
+    /*notification ~ s3 | 1 */
+    private NotificationManagerCompat notificationManager;
+    /*notification ~ s3 | end 1*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +100,11 @@ public class ReminderFormActivity extends AppCompatActivity {
         addReminder= findViewById(R.id.addReminder);
 //        tasksSpinner = findViewById(R.id.reminderIntensityLevel);
 
+        /*notification ~ s3 | 2 */
+        notificationManager = NotificationManagerCompat.from(this);
+        /*notification ~ s3 | end 2*/
+
+        /*notification ~ s3 | to creat notf when the add btn click*/
         addReminder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -107,9 +121,28 @@ public class ReminderFormActivity extends AppCompatActivity {
                     intent.putExtra("reminder",reminder );
                     startActivity(intent);
 
-                    /*notification ~ s1*/
-                    createNotificationChannel();
-                    /*notification ~ s1 end*/
+                    /*notification ~ s3 | 3 */
+                    Notification notification = new NotificationCompat.Builder(ReminderFormActivity.this, Notf.CHANNEL_1_ID)
+                            .setSmallIcon(R.drawable.ic_notification)
+                            .setContentTitle(tname)
+                            .setContentText("Intensity level: "+ti)
+                            .setPriority(NotificationCompat.PRIORITY_HIGH)
+                            .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                            .build();
+
+                    /*set time */
+                    AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+
+                    long timeAtButtonClick = System.currentTimeMillis();
+                    long time = timeAtButtonClick+ 1000*10;//dateTime.substring()
+
+//                    alarmManager.set(AlarmManager.RTC_WAKEUP,
+//                            time,
+//                            );
+                    /*display notf*/
+                    notificationManager.notify(Integer.parseInt(reminder.getId()),notification);
+
+                    /*notification ~ s3 | end 3*/
 
                 }else {
                     Toast.makeText(ReminderFormActivity.this, "you need to full ALL the form to add the reminder", Toast.LENGTH_SHORT).show();
@@ -121,9 +154,6 @@ public class ReminderFormActivity extends AppCompatActivity {
 
     }
     /*notification ~ s2*/
-    public void createNotificationChannel(){
-//        if(Build)
-    }
     /*notification ~ s2 end*/
 
 
