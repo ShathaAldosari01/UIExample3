@@ -3,6 +3,9 @@ package com.example.uiexample3;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
 
 
@@ -48,11 +51,23 @@ public class Reminder implements Parcelable {
     private String cheacked;
 
     public Reminder(String n, String i, String date){
-        //TODO validation for name, intensity
-        name= n;
-        intensityLevel=i;
+        if(validName(n))
+            name= n;
+        else
+            name ="Walking";
+        if(validIntensity(i))
+            intensityLevel=i;
+        else
+            intensityLevel="Low";
         cheacked="0";
-        this.date = date;
+        if(validDate(date))
+            this.date = date;
+        else {
+            long yourmilliseconds = System.currentTimeMillis();
+            SimpleDateFormat sdf = new SimpleDateFormat("yy-MM-dd HH:mm");
+            Date resultdate = new Date(yourmilliseconds);
+            this.date = sdf.format(resultdate);
+        }
         //gnrat id
         Random random= new Random();
         int ids[]= new int[6];
@@ -69,25 +84,46 @@ public class Reminder implements Parcelable {
         reminderID= ""+ids[5]+ids[4]+ids[3]+ids[2]+ids[1]+ids[0];
     }
 
-    public void displayReminderInfo(){
-        //TODO displayReminderInfo
+    public boolean validName(String n){
+        return n!="";
     }
 
-    public void cheackReminder(){
-        if(cheacked.equals("0"))
+    public boolean validDate(String d) {
+        String myDate = d;
+//creates a formatter that parses the date in the given format
+        SimpleDateFormat sdf = new SimpleDateFormat("yy-MM-dd HH:mm");
+        try {
+            Date date = sdf.parse(myDate);
+            long timeInMillis = date.getTime();
+
+            if (timeInMillis>System.currentTimeMillis())
+                return true;
+        }catch (ParseException e){
+            return false;
+        }
+        return false;
+    }
+    public boolean validIntensity(String i){
+        if(i.equalsIgnoreCase("Low")||i.equalsIgnoreCase("Moderate")||i.equalsIgnoreCase("High"))
+            return true;
+        return false;
+    }
+
+    public String[] reminderInfo(){
+        String[] info = {reminderID, name, intensityLevel,date, cheacked };
+        return info;
+    }
+
+    public String cheackReminder(){
+        if(cheacked.equals("0")){
             cheacked= "1";
-        else cheacked = "0";
+            return cheacked;
+        }
+        cheacked = "0";
+        return cheacked;
     }
 
-    public boolean deleteReminder(){
-        //TODO deleteReminder
-        return true;
-    }
 
-    public boolean approveDeletion(boolean b){
-        //TODO approveDeletion
-        return true;
-    }
 
     //Getter, Setters
     public String getName(){

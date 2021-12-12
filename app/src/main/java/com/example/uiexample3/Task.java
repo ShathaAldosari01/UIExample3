@@ -46,8 +46,14 @@ public class Task implements Parcelable {
 
     public Task(String n, String i){
         //TODO validation for name, intensity
-        name= n;
-        intensityLevel=i;
+        if(validName(n))
+            name= n;
+        else
+            name= "Walking";
+        if(validIntensity(i))
+            intensityLevel=i;
+        else
+            intensityLevel= "Low";
         cheacked="0";
         //gnrat id
         Random random= new Random();
@@ -65,24 +71,28 @@ public class Task implements Parcelable {
         taskID= ""+ids[5]+ids[4]+ids[3]+ids[2]+ids[1]+ids[0];
     }
 
-    public void displayTaskInfo(){
-        //TODO displayTaskInfo
+    public boolean validName(String n){
+        return n!="";
     }
 
-    public void cheackTask(){
-        if(cheacked.equals("0"))
+    public boolean validIntensity(String i){
+        if(i.equalsIgnoreCase("Low")||i.equalsIgnoreCase("Moderate")||i.equalsIgnoreCase("High"))
+            return true;
+        return false;
+    }
+
+    public String[] TaskInfo(){
+         String[] info = {taskID, name, intensityLevel,cheacked };
+         return info;
+    }
+
+    public String cheackTask(){
+        if(cheacked.equals("0")){
             cheacked= "1";
-        else cheacked = "0";
-    }
-
-    public boolean deleteTask(){
-        //TODO deleteTask
-        return true;
-    }
-
-    public boolean approveDeletion(boolean b){
-        //TODO approveDeletion
-        return true;
+            return cheacked;
+        }
+        cheacked = "0";
+        return cheacked;
     }
 
     //Getter, Setters
